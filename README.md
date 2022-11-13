@@ -1,8 +1,36 @@
 # dotfiles
 
-Usando o Dot Manager https://yadm.io/
-
 ### Instalações necessárias:
+
+## ZSH (Se estiver no linux)
+
+Ubuntu:
+```
+sudo apt install zsh
+```
+
+## Oh my zsh
+
+https://ohmyz.sh/#install
+
+```
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+
+## Instalar Dot Manager 
+
+https://yadm.io/
+```
+sudo apt install yadm
+```
+
+Importando dotfiles
+```
+yadm clone --bootstrap git@github.com:igorpoubel/dotfiles.git
+```
+
+## Instalar plugins
 
 https://github.com/zsh-users/zsh-autosuggestions
 
