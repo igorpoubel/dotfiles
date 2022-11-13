@@ -17,19 +17,6 @@ https://ohmyz.sh/#install
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-
-## Instalar Dot Manager 
-
-https://yadm.io/
-```
-sudo apt install yadm
-```
-
-Importando dotfiles
-```
-yadm clone --bootstrap git@github.com:igorpoubel/dotfiles.git
-```
-
 ## Instalar plugins
 
 https://github.com/zsh-users/zsh-autosuggestions
@@ -42,4 +29,16 @@ https://github.com/zsh-users/zsh-syntax-highlighting
 
 ```
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
+
+## Instalar Dot Manager 
+
+https://yadm.io/
+```
+sudo apt install yadm
+```
+
+Importando dotfiles
+```
+yadm clone --bootstrap git@github.com:igorpoubel/dotfiles.git
 ```
