@@ -1,48 +1,47 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$HOME/.yarn/bin:/bin:/usr/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/bin:/usr/bin:/usr/local/bin:$PATH
 
-export ANDROID_HOME=$HOME/Android/Sdk
+if [[ $(uname) == "Darwin" ]]; then
+  export ANDROID_HOME=$HOME/Library/Android/Sdk
+  export FNM_PATH="$HOME/Library/Application Support/fnm"
+
+else
+  export ANDROID_HOME=$HOME/Android/Sdk
+  
+  test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+  test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bashrc
+
+  export WEBSTORM_PATH=/opt/WebStorm-2024.2.4/WebStorm-242.23726.96/bin
+  if [ -d "$WEBSTORM_PATH" ]; then
+    export PATH=$PATH:$WEBSTORM_PATH
+  fi
+
+#  export FNM_PATH="$HOME/Library/Application Support/fnm"
+
+fi
+
+if [ -d "$HOME/.yarn/bin" ]; then
+  export PATH="$PATH:$HOME/.yarn/bin"
+fi
+
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
-test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bashrc
 
-export DENO_INSTALL="/home/igorpoubel/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
+export DENO_INSTALL="$HOME/.deno"
+if [ -d "$DENO_INSTALL" ]; then
+  export PATH="$DENO_INSTALL/bin:$PATH"
+fi
+
+
+export PATH="$FNM_PATH:$PATH"
+eval "$(fnm env --use-on-cd --shell zsh)"
+
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-    
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export WEBSTORM_PATH=/opt/WebStorm-2024.2.4/WebStorm-242.23726.96/bin
-export PATH=$PATH:$WEBSTORM_PATH
-
-# place this after nvm initialization!
-autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
-
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -161,3 +160,4 @@ SPACESHIP_USER_SHOW=always
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_CHAR_SYMBOL="❯"
 SPACESHIP_CHAR_SUFFIX=" "
+
