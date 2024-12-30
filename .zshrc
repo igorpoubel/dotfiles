@@ -1,12 +1,26 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.yarn/bin:/bin:/usr/bin:/usr/local/bin:$PATH
 
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bashrc
+
+export DENO_INSTALL="/home/igorpoubel/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
     
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export WEBSTORM_PATH=/opt/WebStorm-2024.2.4/WebStorm-242.23726.96/bin
+export PATH=$PATH:$WEBSTORM_PATH
 
 # place this after nvm initialization!
 autoload -U add-zsh-hook
