@@ -37,3 +37,12 @@ Maybe you need to run the following command:
 ```bash
 chmod a+x init_installs.sh
 ```
+
+## Usage
+
+To use, run the following commands:
+
+```bash
+cd dotfiles
+stow .
+```
