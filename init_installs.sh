@@ -12,6 +12,8 @@ elif [ "$(uname)" = "Linux" ]; then
         OS="$OS - UBUNTU"
     elif grep -q "CentOS" /etc/*release 2>/dev/null; then
         OS="$OS - CENTOS"
+    elif grep -q "Pop!_OS" /etc/*release 2>/dev/null; then
+        OS="$OS - POP_OS"
     fi
 fi
 
@@ -27,7 +29,7 @@ if [ "$OS" = "MAC" ]; then
 elif [ "$OS" = "LINUX - FEDORA" ]; then
     echo "\nInstalling packages with DNF..."
     sudo dnf install -y git zsh curl wget unzip
-elif [ "$OS" = "LINUX - UBUNTU" ]; then
+elif [ "$OS" = "LINUX - UBUNTU" ] || [ "$OS" = "LINUX - POP_OS"  ]; then
     echo "\nInstalling packages with APT..."
     sudo apt update
     sudo apt install -y git zsh curl wget unzip
