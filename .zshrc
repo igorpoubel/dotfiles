@@ -120,3 +120,11 @@ if [ -d "$FNM_PATH" ]; then
 fi
 
 eval "$(fnm env --use-on-cd --shell zsh)"
+
+
+
+# Golang
+GO_PATH="/usr/local/go/bin"
+if [ -d "$GO_PATH" ]; then
+  export PATH="/usr/local/go/bin:$PATH"
+fi

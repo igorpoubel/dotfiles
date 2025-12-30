@@ -1,5 +1,7 @@
 #!/bin/sh
 
+LATEST_GOLANG=$(curl -s https://go.dev/VERSION?m=text | head -n 1)
+
 echo "Installing packages..."
 
 if [ "$(uname)" = "Darwin" ]; then
@@ -64,3 +66,16 @@ curl -fsSL https://raw.githubusercontent.com/Schniz/fnm/refs/heads/master/.ci/in
 echo "\nInstalling oh-my-zsh..."
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+
+if [ "$OS" = "MAC" ]; then
+    
+elif [ "$OS" = "LINUX - FEDORA" ]; then
+    
+elif [ "$OS" = "LINUX - UBUNTU" ] || [ "$OS" = "LINUX - POP_OS"  ]; then
+    echo "\nInstalling Golang..."
+    wget https://go.dev/dl/${LATEST_GOLANG}.linux-amd64.tar.gz
+    sudo tar -C /usr/local -xzf ${LATEST_GOLANG}.linux-amd64.tar.gz
+else
+    echo "Unsupported OS. Exiting."
+    exit 1
+fi
