@@ -35,6 +35,11 @@ elif [ "$OS" = "LINUX - UBUNTU" ] || [ "$OS" = "LINUX - POP_OS"  ]; then
     echo "\nInstalling packages with APT..."
     sudo apt update
     sudo apt install -y git zsh curl wget unzip
+
+    echo "\nInstalling Golang..."
+    wget https://go.dev/dl/${LATEST_GOLANG}.linux-amd64.tar.gz
+    sudo tar -C /usr/local -xzf ${LATEST_GOLANG}.linux-amd64.tar.gz
+    rm ${LATEST_GOLANG}.linux-amd64.tar.gz
 else
     echo "Unsupported OS. Exiting."
     exit 1
@@ -65,17 +70,3 @@ curl -fsSL https://raw.githubusercontent.com/Schniz/fnm/refs/heads/master/.ci/in
 
 echo "\nInstalling oh-my-zsh..."
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-
-if [ "$OS" = "MAC" ]; then
-    
-elif [ "$OS" = "LINUX - FEDORA" ]; then
-    
-elif [ "$OS" = "LINUX - UBUNTU" ] || [ "$OS" = "LINUX - POP_OS"  ]; then
-    echo "\nInstalling Golang..."
-    wget https://go.dev/dl/${LATEST_GOLANG}.linux-amd64.tar.gz
-    sudo tar -C /usr/local -xzf ${LATEST_GOLANG}.linux-amd64.tar.gz
-else
-    echo "Unsupported OS. Exiting."
-    exit 1
-fi
