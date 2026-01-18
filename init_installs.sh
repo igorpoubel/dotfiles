@@ -40,6 +40,9 @@ elif [ "$OS" = "LINUX - UBUNTU" ] || [ "$OS" = "LINUX - POP_OS"  ]; then
     wget https://go.dev/dl/${LATEST_GOLANG}.linux-amd64.tar.gz
     sudo tar -C /usr/local -xzf ${LATEST_GOLANG}.linux-amd64.tar.gz
     rm ${LATEST_GOLANG}.linux-amd64.tar.gz
+
+    echo "\nInstalling Deno..."
+    curl -fsSL https://deno.land/install.sh | sh -s -- -y --no-modify-path
 else
     echo "Unsupported OS. Exiting."
     exit 1

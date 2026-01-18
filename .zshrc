@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/home/igorpoubel/.zsh/completions:"* ]]; then export FPATH="/home/igorpoubel/.zsh/completions:$FPATH"; fi
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
@@ -115,7 +117,7 @@ source $ZSH/oh-my-zsh.sh
 # fnm
 FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
-  export PATH="$HOME/.local/share/fnm:$PATH"
+  export PATH="$FNM_PATH:$PATH"
   eval "`fnm env`"
 fi
 
@@ -126,5 +128,12 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 # Golang
 GO_PATH="/usr/local/go/bin"
 if [ -d "$GO_PATH" ]; then
-  export PATH="/usr/local/go/bin:$PATH"
+  export PATH="$GO_PATH:$PATH"
+fi
+
+
+# Deno
+DENO_PATH="$HOME/.deno/env"
+if [ -d "$DENO_PATH" ]; then
+  export PATH="$DENO_PATH:$PATH"
 fi
