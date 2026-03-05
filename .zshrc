@@ -1,5 +1,5 @@
 # Add deno completions to search path
-if [[ ":$FPATH:" != *":/home/igorpoubel/.zsh/completions:"* ]]; then export FPATH="/home/igorpoubel/.zsh/completions:$FPATH"; fi
+if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="$HOME/.zsh/completions:$FPATH"; fi
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
@@ -137,3 +137,5 @@ DENO_PATH="$HOME/.deno/env"
 if [ -d "$DENO_PATH" ]; then
   export PATH="$DENO_PATH:$PATH"
 fi
+
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
